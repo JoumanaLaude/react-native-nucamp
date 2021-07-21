@@ -17,11 +17,11 @@ const DirectoryNavigator = createStackNavigator(
         initialRouteName: 'Directory',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#C9D8B6'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#515E63',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#515E63'
             }
         }
     }
@@ -34,11 +34,11 @@ const HomeNavigator = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#C9D8B6'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#515E63',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#515E63'
             }
         }
     }
@@ -50,7 +50,7 @@ const MainNavigator = createDrawerNavigator(
         Directory: { screen: DirectoryNavigator }
     },
     {
-        drawerBackgroundColor: '#CEC8FF'
+        drawerBackgroundColor: '#F1ECC3'
     }
 );
 
