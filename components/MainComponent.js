@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
+import About from './AboutComponent';
+import Contact from './ContactComponent';
 import Directory from './DirectoryComponent';
 import CampsiteInfo from './CampsiteInfoComponent';
 import Constants from 'expo-constants';
@@ -44,10 +46,46 @@ const HomeNavigator = createStackNavigator(
     }
 );
 
+const AboutNavigator = createStackNavigator(
+    {
+        About: { screen: About }
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#C9D8B6'
+            },
+            headerTintColor: '#515E63',
+            headerTitleStyle: {
+                color: '#515E63'
+            }
+        }
+    }
+);
+
+const ContactNavigator = createStackNavigator(
+    {
+        Contact: { screen: Contact }
+    },
+    {
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#C9D8B6'
+            },
+            headerTintColor: '#515E63',
+            headerTitleStyle: {
+                color: '#515E63'
+            }
+        }
+    }
+);
+
 const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
-        Directory: { screen: DirectoryNavigator }
+        Directory: { screen: DirectoryNavigator },
+        About: { screen: AboutNavigator },
+        Contact: { screen: ContactNavigator }
     },
     {
         drawerBackgroundColor: '#F1ECC3'
@@ -55,9 +93,6 @@ const MainNavigator = createDrawerNavigator(
 );
 
 const AppNavigator = createAppContainer(MainNavigator);
-// APP BREAKS WHEN CHANGING DirectoryNavigator to MainNavigator ^
-
-// https://reactnavigation.org/docs/drawer-navigator/
 
 class Main extends Component {
     render() {
