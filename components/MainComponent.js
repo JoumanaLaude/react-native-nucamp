@@ -129,11 +129,11 @@ const ReservationNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#C9D8B6'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#515E63',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#515E63'
             },
             headerLeft: <Icon
                 name='tree'
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     drawerHeader: {
-        backgroundColor: '#5637DD',
+        backgroundColor: '#C9D8B6',
         height: 140,
         alignItems: 'center',
         justifyContent: 'center',
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     drawerHeaderText: {
-        color: '#fff',
+        color: '#515E63',
         fontSize: 24,
         fontWeight: 'bold'
     },
@@ -288,7 +288,7 @@ const styles = StyleSheet.create({
     },
     stackIcon: {
         marginLeft: 10,
-        color: '#fff',
+        color: '#515E63',
         fontSize: 24
     }
 });

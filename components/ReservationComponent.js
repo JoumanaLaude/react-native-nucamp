@@ -65,7 +65,7 @@ class Reservation extends Component {
                     <Switch
                         style={styles.formItem}
                         value={this.state.hikeIn}
-                        trackColor={{ true: '#5637DD', false: null }}
+                        trackColor={{ true: '#515E63', false: null }}
                         onValueChange={value => this.setState({ hikeIn: value })}
                     />
                 </View>
@@ -76,7 +76,7 @@ class Reservation extends Component {
                             this.setState({ showCalendar: !this.state.showCalendar })
                         }
                         title={this.state.date.toLocaleDateString('en-US')}
-                        color='#5637DD'
+                        color='#515E63'
                         accessibilityLabel='Tap me to select a reservation date'
                     />
                 </View>
@@ -95,7 +95,7 @@ class Reservation extends Component {
                     <Button
                         onPress={() => this.handleReservation()}
                         title='Search'
-                        color='#5637DD'
+                        color='#515E63'
                         accessibilityLabel='Tap me to search for available campsites to reserve'
                     />
                 </View>
@@ -123,7 +123,7 @@ class Reservation extends Component {
                                 this.toggleModal();
                                 this.resetForm();
                             }}
-                            color='#5637DD'
+                            color='#515E63'
                             title='Close'
                         />
                     </View>
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     modalTitle: {
         fontSize: 24,
         fontWeight: 'bold',
-        backgroundColor: '#5637DD',
+        backgroundColor: '#515E63',
         textAlign: 'center',
         color: '#fff',
         marginBottom: 20
