@@ -150,7 +150,6 @@ class CampsiteInfo extends Component {
 
                     <View style={styles.modal}>
                         <Rating
-                            readonly
                             showRating
                             startingValue={this.state.rating}
                             imageSize={40}
