@@ -6,6 +6,7 @@ import Directory from './DirectoryComponent';
 import CampsiteInfo from './CampsiteInfoComponent';
 import Reservation from './ReservationComponent';
 import Favorites from './FavoritesComponent';
+import Login from './LoginComponent';
 import Constants from 'expo-constants';
 import { View, Platform, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
@@ -128,7 +129,7 @@ const ReservationNavigator = createStackNavigator(
         Reservation: { screen: Reservation }
     },
     {
-        defaultNavigationOptions: ({navigation}) => ({
+        defaultNavigationOptions: ({ navigation }) => ({
             headerStyle: {
                 backgroundColor: '#C9D8B6'
             },
@@ -151,7 +152,7 @@ const FavoritesNavigator = createStackNavigator(
         Favorites: { screen: Favorites }
     },
     {
-        defaultNavigationOptions: ({navigation}) => ({
+        defaultNavigationOptions: ({ navigation }) => ({
             headerStyle: {
                 backgroundColor: '#C9D8B6'
             },
@@ -169,16 +170,39 @@ const FavoritesNavigator = createStackNavigator(
     }
 );
 
+const LoginNavigator = createStackNavigator(
+    {
+        Login: { screen: Login }
+    },
+    {
+        defaultNavigationOptions: ({ navigation }) => ({
+            headerStyle: {
+                backgroundColor: '#C9D8B6'
+            },
+            headerTintColor: '#515E63',
+            headerTitleStyle: {
+                color: '#515E63'
+            },
+            headerLeft: <Icon
+                name='sign-in'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
+);
+
 const CustomDrawerContentComponent = props => (
     <ScrollView>
-        <SafeAreaView 
+        <SafeAreaView
             style={styles.container}
-            forceInset={{top: 'always', horizontal: 'never'}}>
+            forceInset={{ top: 'always', horizontal: 'never' }}>
             <View style={styles.drawerHeader}>
-                <View style={{flex: 1}}>
+                <View style={{ flex: 1 }}>
                     <Image source={require('./images/logo.png')} style={styles.drawerImage} />
                 </View>
-                <View style={{flex: 2}}>
+                <View style={{ flex: 2 }}>
                     <Text style={styles.drawerHeaderText}>NuCamp</Text>
                 </View>
             </View>
@@ -189,6 +213,19 @@ const CustomDrawerContentComponent = props => (
 
 const MainNavigator = createDrawerNavigator(
     {
+        Login: {
+            screen: LoginNavigator,
+            navigationOptions: {
+                drawerIcon: ({ tintColor }) => (
+                    <Icon
+                        name='sign-in'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            }
+        },
         Home: {
             screen: HomeNavigator,
             navigationOptions: {
@@ -219,7 +256,7 @@ const MainNavigator = createDrawerNavigator(
             screen: ReservationNavigator,
             navigationOptions: {
                 drawerLabel: 'Reserve Campsite',
-                drawerIcon: ({tintColor}) => (
+                drawerIcon: ({ tintColor }) => (
                     <Icon
                         name='tree'
                         type='font-awesome'
@@ -233,7 +270,7 @@ const MainNavigator = createDrawerNavigator(
             screen: FavoritesNavigator,
             navigationOptions: {
                 drawerLabel: 'My Favorites',
-                drawerIcon: ({tintColor}) => (
+                drawerIcon: ({ tintColor }) => (
                     <Icon
                         name='heart'
                         type='font-awesome'
@@ -273,7 +310,9 @@ const MainNavigator = createDrawerNavigator(
         }
     },
     {
-        drawerBackgroundColor: '#CEC8FF',
+        initialRouteName: 'Home',
+        // add initial route so that it doesn't default to login on reload
+        drawerBackgroundColor: '#eef3e8',
         contentComponent: CustomDrawerContentComponent
     }
 );
