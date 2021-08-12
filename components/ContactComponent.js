@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Card, Text, Button, Icon } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
 import * as MailComposer from 'expo-mail-composer';
@@ -31,26 +31,19 @@ class Contact extends Component {
                   <Text>Email: campsites@nucamp.co</Text>
                   <Button
                      title="Send Email"
-                     buttonStyle={{ backgroundColor: '#C9D8B6', margin: 40, color: '#515E63' }}
+                     buttonStyle={{ backgroundColor: '#515E63', margin: 40 }}
                      icon={<Icon
                         name='envelope-o'
                         type='font-awesome'
-                        color='#515E63'
+                        color='#C9D8B6'
                         iconStyle={{ marginRight: 10 }}
                      />}
-                     onPress={() => this.sendMail()}
-                  />
+                     onPress={() => this.sendMail()} />
                </Card>
             </Animatable.View>
          </ScrollView>
       );
    }
 }
-
-const styles = StyleSheet.create({
-   buttonText: {
-       color: '#515E63',
-   }
-});
 
 export default Contact;

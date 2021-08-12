@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Button, Modal, StyleSheet, Text, View, ScrollView, FlatList,
-    Alert, PanResponder
+    Alert, PanResponder, Share
 } from 'react-native';
 import { Card, Icon, Rating, Input } from 'react-native-elements';
 import { connect } from 'react-redux';
@@ -69,6 +69,19 @@ function RenderCampsite(props) {
         }
     });
 
+    const shareCampsite = (title, message, url) => {
+        Share.share({
+            title,
+            message: `${title}: ${message} ${url}`,
+            url
+            // title not required but you must have message or url or both
+        },
+            {
+                dialogTitle: 'Share ' + title
+                // android only
+            });
+    };
+
     if (campsite) {
         return (
             <Animatable.View
@@ -88,7 +101,7 @@ function RenderCampsite(props) {
                         <Icon
                             name={props.favorite ? 'heart' : 'heart-o'}
                             type='font-awesome'
-                            color='#f50'
+                            color='#515E63'
                             raised
                             reverse
                             onPress={() => props.favorite ?
@@ -97,10 +110,18 @@ function RenderCampsite(props) {
                         <Icon
                             name='pencil'
                             type='font-awesome'
-                            color='#5637DD'
+                            color='#515E63'
                             raised
                             reverse
                             onPress={() => props.onShowModal()}
+                        />
+                        <Icon
+                            name={'share'}
+                            type='font-awesome'
+                            color='#515E63'
+                            raised
+                            reverse
+                            onPress={() => shareCampsite(campsite.name, campsite.description, baseUrl + campsite.image)}
                         />
                     </View>
                 </Card>
@@ -229,7 +250,7 @@ class CampsiteInfo extends Component {
                                 this.handleComment(campsiteId);
                                 this.resetForm();
                             }}
-                                color='#5637DD'
+                                color='#515E63'
                                 title='Submit' />
                         </View>
 
