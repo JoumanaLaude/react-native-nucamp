@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
-import { ScrollView } from 'react-native';
-import { Card, Text } from 'react-native-elements';
+import { ScrollView, StyleSheet } from 'react-native';
+import { Card, Text, Button, Icon } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
-
+import * as MailComposer from 'expo-mail-composer';
 
 class Contact extends Component {
 
    static navigationOptions = {
       title: 'Contact Us'
+   }
+
+   sendMail() {
+      MailComposer.composeAsync({
+         recipients: ['campsites@nucamp.co'],
+         subject: 'Inquiry',
+         body: 'To whom it may concern:'
+      })
    }
 
    render() {
@@ -21,11 +29,28 @@ class Contact extends Component {
                   <Text style={{ marginBottom: 10 }} >U.S.A.</Text>
                   <Text>Phone: 1-206-555-1234</Text>
                   <Text>Email: campsites@nucamp.co</Text>
+                  <Button
+                     title="Send Email"
+                     buttonStyle={{ backgroundColor: '#C9D8B6', margin: 40, color: '#515E63' }}
+                     icon={<Icon
+                        name='envelope-o'
+                        type='font-awesome'
+                        color='#515E63'
+                        iconStyle={{ marginRight: 10 }}
+                     />}
+                     onPress={() => this.sendMail()}
+                  />
                </Card>
             </Animatable.View>
          </ScrollView>
       );
    }
 }
+
+const styles = StyleSheet.create({
+   buttonText: {
+       color: '#515E63',
+   }
+});
 
 export default Contact;
