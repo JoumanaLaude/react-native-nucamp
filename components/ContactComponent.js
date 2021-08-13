@@ -31,11 +31,12 @@ class Contact extends Component {
                   <Text>Email: campsites@nucamp.co</Text>
                   <Button
                      title="Send Email"
-                     buttonStyle={{ backgroundColor: '#515E63', margin: 40 }}
+                     titleStyle={{ color: '#515E63' }}
+                     buttonStyle={{ backgroundColor: '#C9D8B6', margin: 40 }}
                      icon={<Icon
                         name='envelope-o'
                         type='font-awesome'
-                        color='#C9D8B6'
+                        color='#515E63'
                         iconStyle={{ marginRight: 10 }}
                      />}
                      onPress={() => this.sendMail()} />
