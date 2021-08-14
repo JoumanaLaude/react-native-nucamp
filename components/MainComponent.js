@@ -328,17 +328,36 @@ class Main extends Component {
         this.props.fetchPromotions();
         this.props.fetchPartners();
 
-        NetInfo.fetch().then(connectionInfo => {
-            (Platform.OS === 'ios')
-                ? Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
-                : ToastAndroid.show('Initial Network Connectivity Type: ' +
-                    connectionInfo.type, ToastAndroid.LONG);
-        });
+        this.showNetInfo();
 
-        this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
-            this.handleConnectivityChange(connectionInfo);
-        });
+        // this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
+        //     this.handleConnectivityChange(connectionInfo);
+        // });
     }
+
+    //async function showNetInfo() {
+    showNetInfo = async () => {
+        const connectionInfo = await NetInfo.fetch();
+
+        (Platform.OS === 'ios')
+            ? Alert.alert('Initial Network Connectivity Type:' + connectionInfo.type)
+            : ToastAndroid.show('Initial Network Connectivity Type: ' +
+                connectionInfo.type, ToastAndroid.LONG);
+    };
+
+    //     NetInfo.fetch()
+    //         .then(connectionInfo => {
+    //             (Platform.OS === 'ios')
+    //                 ? Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
+    //                 : ToastAndroid.show('Initial Network Connectivity Type: ' +
+    //                     connectionInfo.type, ToastAndroid.LONG);
+    //         });
+
+    //     this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
+    //         this.handleConnectivityChange(connectionInfo);
+    //     });
+    // }
+
     componentWillUnmount() {
         this.unsubscribeNetInfo();
     }
@@ -373,7 +392,7 @@ class Main extends Component {
                     paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight
                 }}>
                 <AppNavigator />
-            </View>
+            </View >
         );
     }
 }
